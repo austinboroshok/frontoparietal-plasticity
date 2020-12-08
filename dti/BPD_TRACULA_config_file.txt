@@ -1,0 +1,243 @@
+# FreeSurfer SUBJECTS_DIR
+# T1 images and FreeSurfer segmentations are expected to be found here
+#must set correct environment by running [ bpd_env ] 
+
+setenv SUBJECTS_DIR $SUBJECTS_DIR
+
+# Output directory where trac-all results will be saved
+# Default: Same as SUBJECTS_DIR
+
+set dtroot = /data/jux/mackey_group/austin/BPD/TRACULA
+
+# Subject IDs
+
+set subjlist = (BPD0050A BPD0068A BPD0068B BPD0070A BPD0070B BPD0071A BPD0071B BPD0072A BPD0072B BPD0073A BPD0073B BPD0075A BPD0075B BPD0079A BPD0079B BPD0086A BPD0086B BPD0088A BPD0088B BPD0089A BPD0089B BPD0090A BPD0090B BPD0091A BPD0091B BPD0092A BPD0092B BPD0093A BPD0093B BPD0094A BPD0094B BPD0096A BPD0096B BPD0097A BPD0097B BPD0098A BPD0098B BPD0099A BPD0099B BPD0100A BPD0100B BPD0101A BPD0101B BPD0102A BPD0102B BPD0103A BPD0103B BPD0104A BPD0104B BPD0105A BPD0105B BPD0107A BPD0107B BPD0108A BPD0108B BPD0109A BPD0109B BPD0110A BPD0110B BPD0111A BPD0111B BPD0113A BPD0113B BPD0115A BPD0115B BPD0119A BPD0119B BPD0120A BPD0120B BPD0121A BPD0121B BPD0122A BPD0122B BPD0123A BPD0123B BPD0124A BPD0124B BPD0125A BPD0125B BPD0126A BPD0126B BPD0127A BPD0127B BPD0129A BPD0129B BPD0130A BPD0130B BPD0131A BPD0131B BPD0133A BPD0133B)
+
+
+# Input diffusion DICOMs
+# If original DICOMs don't exist, these can be in other image format
+# but then the gradient table and b-value table must be specified (see below)
+
+
+set dcmroot = /data/picsl/mackey_group/BPD/dicoms/
+
+set dcmlist = (BPD0050A/001_000012_000001.dcm BPD0068A/001_000014_000001.dcm BPD0068B/001_000010_000001.dcm BPD0070A/001_000013_000001.dcm BPD0070B/001_000013_000001.dcm BPD0071A/001_000013_000001.dcm BPD0071B/001_000013_000001.dcm BPD0072A/001_000013_000001.dcm BPD0072B/001_000013_000001.dcm BPD0073A/001_000013_000001.dcm BPD0073B/001_000013_000001.dcm BPD0075A/001_000013_000001.dcm BPD0075B/001_000014_000001.dcm BPD0079A/001_000013_000001.dcm BPD0079B/001_000013_000001.dcm BPD0086A/001_000012_000001.dcm BPD0086B/001_000012_000001.dcm BPD0088A/001_000012_000001.dcm BPD0088B/001_000012_000001.dcm BPD0089A/001_000013_000001.dcm BPD0089B/001_000013_000001.dcm BPD0090A/001_000013_000001.dcm BPD0090B/001_000014_000001.dcm BPD0091A/001_000013_000001.dcm BPD0091B/001_000013_000001.dcm BPD0092A/001_000013_000001.dcm BPD0092B/001_000015_000001.dcm BPD0093A/001_000013_000001.dcm BPD0093B/001_000013_000001.dcm BPD0094A/001_000014_000001.dcm BPD0094B/001_000013_000001.dcm BPD0096A/001_000014_000001.dcm BPD0096B/001_000013_000001.dcm BPD0097A/001_000018_000001.dcm BPD0097B/001_000013_000001.dcm BPD0098A/001_000014_000001.dcm BPD0098B/001_000013_000001.dcm BPD0099A/001_000013_000001.dcm BPD0099B/001_000013_000001.dcm BPD0100A/001_000014_000001.dcm BPD0100B/001_000013_000001.dcm BPD0101A/001_000013_000001.dcm BPD0101B/001_000013_000001.dcm BPD0102A/001_000015_000001.dcm BPD0102B/001_000013_000001.dcm BPD0103A/001_000014_000001.dcm BPD0103B/001_000013_000001.dcm BPD0104A/001_000013_000001.dcm BPD0104B/001_000013_000001.dcm BPD0105A/001_000013_000001.dcm BPD0105B/001_000013_000001.dcm BPD0107A/001_000013_000001.dcm BPD0107B/001_000013_000001.dcm BPD0108A/001_000014_000001.dcm BPD0108B/001_000013_000001.dcm BPD0109A/001_000013_000001.dcm BPD0109B/001_000013_000001.dcm BPD0110A/001_000023_000001.dcm BPD0110B/001_000013_000001.dcm BPD0111A/001_000013_000001.dcm BPD0111B/001_000013_000001.dcm BPD0113A/001_000013_000001.dcm BPD0113B/001_000013_000001.dcm BPD0115A/001_000013_000001.dcm BPD0115B/001_000015_000001.dcm BPD0119A/001_000013_000001.dcm BPD0119B/001_000013_000001.dcm BPD0120A/001_000015_000001.dcm BPD0120B/001_000013_000001.dcm BPD0121A/001_000013_000001.dcm BPD0121B/001_000013_000001.dcm BPD0122A/001_000014_000001.dcm BPD0122B/001_000013_000001.dcm BPD0123A/001_000013_000001.dcm BPD0123B/001_000013_000001.dcm BPD0124A/001_000013_000001.dcm BPD0124B/001_000013_000001.dcm BPD0125A/001_000018_000001.dcm BPD0125B/001_000013_000001.dcm BPD0126A/001_000013_000001.dcm BPD0126B/001_000013_000001.dcm BPD0127A/001_000013_000001.dcm BPD0127B/001_000013_000001.dcm BPD0129A/001_000013_000001.dcm BPD0129B/001_000013_000001.dcm BPD0130A/001_000013_000001.dcm BPD0130B/001_000013_000001.dcm BPD0131A/001_000020_000001.dcm BPD0131B/001_000013_000001.dcm BPD0133A/001_000013_000001.dcm BPD0133B/001_000013_000001.dcm)
+
+# Diffusion gradient tables (if there is a different one for each scan)
+# Must be specified if they cannot be read from the DICOM headers
+# The tables must have either three columns, where each row is a gradient vector
+# or three rows, where each column is a gradient vector
+# There must be as many gradient vectors as volumes in the diffusion data set
+# Default: Read from DICOM header
+
+set bveclist = (/data/picsl/mackey_group/BPD/niftis/sub-BPD0050A/dwi/sub-BPD0050A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0068A/dwi/sub-BPD0068A_run-01_dwi.bvec \		
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0068B/dwi/sub-BPD0068B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0070A/dwi/sub-BPD0070A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0070B/dwi/sub-BPD0070B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0071A/dwi/sub-BPD0071A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0071B/dwi/sub-BPD0071B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0072A/dwi/sub-BPD0072A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0072B/dwi/sub-BPD0072B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0073A/dwi/sub-BPD0073A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0073B/dwi/sub-BPD0073B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0075A/dwi/sub-BPD0075A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0075B/dwi/sub-BPD0075B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0079A/dwi/sub-BPD0079A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0079B/dwi/sub-BPD0079B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0086A/dwi/sub-BPD0086A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0086B/dwi/sub-BPD0086B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0088A/dwi/sub-BPD0088A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0088B/dwi/sub-BPD0088B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0089A/dwi/sub-BPD0089A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0089B/dwi/sub-BPD0089B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0090A/dwi/sub-BPD0090A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0090B/dwi/sub-BPD0090B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0091A/dwi/sub-BPD0091A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0091B/dwi/sub-BPD0091B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0092A/dwi/sub-BPD0092A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0092B/dwi/sub-BPD0092B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0093A/dwi/sub-BPD0093A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0093B/dwi/sub-BPD0093B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0094A/dwi/sub-BPD0094A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0094B/dwi/sub-BPD0094B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0096A/dwi/sub-BPD0096A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0096B/dwi/sub-BPD0096B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0097A/dwi/sub-BPD0097A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0097B/dwi/sub-BPD0097B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0098A/dwi/sub-BPD0098A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0098B/dwi/sub-BPD0098B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0099A/dwi/sub-BPD0099A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0099B/dwi/sub-BPD0099B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0100A/dwi/sub-BPD0100A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0100B/dwi/sub-BPD0100B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0101A/dwi/sub-BPD0101A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0101B/dwi/sub-BPD0101B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0102A/dwi/sub-BPD0102A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0102B/dwi/sub-BPD0102B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0103A/dwi/sub-BPD0103A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0103B/dwi/sub-BPD0103B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0104A/dwi/sub-BPD0104A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0104B/dwi/sub-BPD0104B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0105A/dwi/sub-BPD0105A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0105B/dwi/sub-BPD0105B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0107A/dwi/sub-BPD0107A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0107B/dwi/sub-BPD0107B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0108A/dwi/sub-BPD0108A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0108B/dwi/sub-BPD0108B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0109A/dwi/sub-BPD0109A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0109B/dwi/sub-BPD0109B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0110A/dwi/sub-BPD0110A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0110B/dwi/sub-BPD0110B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0111A/dwi/sub-BPD0111A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0111B/dwi/sub-BPD0111B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0113A/dwi/sub-BPD0113A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0113B/dwi/sub-BPD0113B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0115A/dwi/sub-BPD0115A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0115B/dwi/sub-BPD0115B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0119A/dwi/sub-BPD0119A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0119B/dwi/sub-BPD0119B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0120A/dwi/sub-BPD0120A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0120B/dwi/sub-BPD0120B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0121A/dwi/sub-BPD0121A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0121B/dwi/sub-BPD0121B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0122A/dwi/sub-BPD0122A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0122B/dwi/sub-BPD0122B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0123A/dwi/sub-BPD0123A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0123B/dwi/sub-BPD0123B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0124A/dwi/sub-BPD0124A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0124B/dwi/sub-BPD0124B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0125A/dwi/sub-BPD0125A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0125B/dwi/sub-BPD0125B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0126A/dwi/sub-BPD0126A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0126B/dwi/sub-BPD0126B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0127A/dwi/sub-BPD0127A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0127B/dwi/sub-BPD0127B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0129A/dwi/sub-BPD0129A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0129B/dwi/sub-BPD0129B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0130A/dwi/sub-BPD0130A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0130B/dwi/sub-BPD0130B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0131A/dwi/sub-BPD0131A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0131B/dwi/sub-BPD0131B_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0133A/dwi/sub-BPD0133A_run-01_dwi.bvec \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0133B/dwi/sub-BPD0133B_run-01_dwi.bvec)
+
+# Diffusion b-value tables (if there is a different one for each scan)
+# Must be specified if they cannot be read from the DICOM headers
+# There must be as many b-values as volumes in the diffusion data set
+# Default: Read from DICOM header
+
+set bvallist = (/data/picsl/mackey_group/BPD/niftis/sub-BPD0050A/dwi/sub-BPD0050A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0068A/dwi/sub-BPD0068A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0068B/dwi/sub-BPD0068B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0070A/dwi/sub-BPD0070A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0070B/dwi/sub-BPD0070B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0071A/dwi/sub-BPD0071A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0071B/dwi/sub-BPD0071B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0072A/dwi/sub-BPD0072A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0072B/dwi/sub-BPD0072B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0073A/dwi/sub-BPD0073A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0073B/dwi/sub-BPD0073B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0075A/dwi/sub-BPD0075A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0075B/dwi/sub-BPD0075B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0079A/dwi/sub-BPD0079A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0079B/dwi/sub-BPD0079B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0086A/dwi/sub-BPD0086A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0086B/dwi/sub-BPD0086B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0088A/dwi/sub-BPD0088A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0088B/dwi/sub-BPD0088B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0089A/dwi/sub-BPD0089A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0089B/dwi/sub-BPD0089B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0090A/dwi/sub-BPD0090A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0090B/dwi/sub-BPD0090B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0091A/dwi/sub-BPD0091A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0091B/dwi/sub-BPD0091B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0092A/dwi/sub-BPD0092A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0092B/dwi/sub-BPD0092B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0093A/dwi/sub-BPD0093A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0093B/dwi/sub-BPD0093B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0094A/dwi/sub-BPD0094A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0094B/dwi/sub-BPD0094B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0096A/dwi/sub-BPD0096A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0096B/dwi/sub-BPD0096B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0097A/dwi/sub-BPD0097A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0097B/dwi/sub-BPD0097B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0098A/dwi/sub-BPD0098A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0098B/dwi/sub-BPD0098B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0099A/dwi/sub-BPD0099A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0099B/dwi/sub-BPD0099B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0100A/dwi/sub-BPD0100A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0100B/dwi/sub-BPD0100B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0101A/dwi/sub-BPD0101A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0101B/dwi/sub-BPD0101B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0102A/dwi/sub-BPD0102A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0102B/dwi/sub-BPD0102B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0103A/dwi/sub-BPD0103A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0103B/dwi/sub-BPD0103B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0104A/dwi/sub-BPD0104A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0104B/dwi/sub-BPD0104B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0105A/dwi/sub-BPD0105A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0105B/dwi/sub-BPD0105B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0107A/dwi/sub-BPD0107A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0107B/dwi/sub-BPD0107B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0108A/dwi/sub-BPD0108A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0108B/dwi/sub-BPD0108B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0109A/dwi/sub-BPD0109A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0109B/dwi/sub-BPD0109B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0110A/dwi/sub-BPD0110A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0110B/dwi/sub-BPD0110B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0111A/dwi/sub-BPD0111A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0111B/dwi/sub-BPD0111B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0113A/dwi/sub-BPD0113A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0113B/dwi/sub-BPD0113B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0115A/dwi/sub-BPD0115A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0115B/dwi/sub-BPD0115B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0119A/dwi/sub-BPD0119A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0119B/dwi/sub-BPD0119B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0120A/dwi/sub-BPD0120A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0120B/dwi/sub-BPD0120B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0121A/dwi/sub-BPD0121A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0121B/dwi/sub-BPD0121B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0122A/dwi/sub-BPD0122A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0122B/dwi/sub-BPD0122B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0123A/dwi/sub-BPD0123A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0123B/dwi/sub-BPD0123B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0124A/dwi/sub-BPD0124A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0124B/dwi/sub-BPD0124B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0125A/dwi/sub-BPD0125A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0125B/dwi/sub-BPD0125B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0126A/dwi/sub-BPD0126A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0126B/dwi/sub-BPD0126B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0127A/dwi/sub-BPD0127A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0127B/dwi/sub-BPD0127B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0129A/dwi/sub-BPD0129A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0129B/dwi/sub-BPD0129B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0130A/dwi/sub-BPD0130A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0130B/dwi/sub-BPD0130B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0131A/dwi/sub-BPD0131A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0131B/dwi/sub-BPD0131B_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0133A/dwi/sub-BPD0133A_run-01_dwi.bval \
+		/data/picsl/mackey_group/BPD/niftis/sub-BPD0133B/dwi/sub-BPD0133B_run-01_dwi.bval)
+
+
+# set runlist = (1 2 3) (IF YOU WANT TO JUST RUN CERTAIN SUBJECTS IN LIST)
+set doeddy = 1
+set dorotbvecs = 1
+set usemaskanat = 1
+set thrbet = 0.3
+set doregflt = 0
+set doregbbr = 1
+set doregmni = 1
+set doregcvs = 0
+
+set pathlist = ( lh.cst_AS rh.cst_AS \
+                 lh.unc_AS rh.unc_AS \
+                 lh.ilf_AS rh.ilf_AS \
+                 fmajor_PP fminor_PP \
+                 lh.atr_PP rh.atr_PP \
+                 lh.ccg_PP rh.ccg_PP \
+                 lh.cab_PP rh.cab_PP \
+                 lh.slfp_PP rh.slfp_PP \
+                 lh.slft_PP rh.slft_PP)
+
+set ncpts = (6 6 5 5 5 5 7 5 5 5 5 5 4 4 5 5 5 5)
