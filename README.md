@@ -1,5 +1,5 @@
 # frontoparietal-plasticity
-Individual differences in frontoparietal plasticity in humans (Boroshok et al., under review). Please see below for relevant data files and code for analysis. Please contact the authors (Austin Boroshok, boroshok@sas.upenn.edu; Allyson Mackey,mackeya@upenn.edu) with further questions or data requests.
+Individual differences in frontoparietal plasticity in humans (Boroshok et al., under review). Please see below for relevant data files and code for analysis. Please contact the authors (Austin Boroshok, boroshok@sas.upenn.edu; Allyson Mackey,mackeya@upenn.edu) with further questions or data requests. To recreate myelin map pipeline, researchers will need to download the 'MRTool' package, developed by Dr. Marco Ganzetti, from https://www.nitrc.org/projects/mrtool/.
 
 Description of files within this repository:
 
