@@ -1,0 +1,2 @@
+### To recreate Myelin Mapping pipeline, you will need to download the MRTool package, developed by Dr. Marco Ganzetti, at https://www.nitrc.org/projects/mrtool/.
+Next, you will need to move/copy the MRTool package into the /tools directory of your SPM12 directory (e.g., SPM12/tools/MRTool).

@@ -1,0 +1,123 @@
+---
+title: "plasticity"
+author: "ALB"
+date: "10/14/2021"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+### RMarkdown has a known and common issue where Knitted files open in irrelevant apps (e.g., Skype, Calibre).
+### If this happens, I recommend resetting your workindg directory and rendering this markdown file manually using the code below.
+#setwd("~/Downloads/Materials for manuscript Individual differences in frontoparietal plasticity in humans/")
+#render("plasticity.Rmd", output_format = "word_document") 
+
+## Clean workspace
+rm(list=ls())
+
+# Uncomment these two lines if the script produces any errors.
+#require('checkpoint')
+#checkpoint("2021-04-27")
+
+#### DEPENDENCIES ####
+library(psych)
+library(papaja)
+library(dplyr)
+# Install the stable development versions from GitHub
+#devtools::install_github("crsh/papaja")
+
+#### LOAD DATA ####
+
+##################
+### MRI sample ###
+##################
+plasticity_data <- read.csv("~/Downloads/Materials for manuscript Individual differences in frontoparietal plasticity in humans/plasticity_mri_sample.csv", header = T, sep = ",")
+
+```
+
+```{r mri sample results, include = FALSE}
+
+# Relationships between baseline performance and learning gains
+accuracy_mod <- lm(outofscanner_change_avg_pc ~ outofscanner_pre_avg_pc + age + sex, data = plasticity_data)
+accuracy_mod <- apa_print(accuracy_mod, digits =3)
+responsetime_mod <- lm(outofscanner_change_avg_rt ~ outofscanner_pre_avg_rt + age + sex, data = plasticity_data)
+responsetime_mod <- apa_print(responsetime_mod, digits =3)
+
+# Relationships between change in learning indices
+learning_gains_mod <- lm(outofscanner_change_avg_pc ~ outofscanner_change_avg_rt + outofscanner_pre_avg_pc + outofscanner_pre_avg_rt + age + sex, data = plasticity_data)
+learning_gains_mod <- apa_print(learning_gains_mod, digits =3)
+
+# Relationships between learning gains and age, sex
+age_accuracy_change_mod <- lm(outofscanner_change_avg_pc ~ age + outofscanner_pre_avg_pc, data = plasticity_data)
+age_accuracy_change_mod <- apa_print(age_accuracy_change_mod, digits =3)
+sex_accuracy_change_mod <- lm(outofscanner_change_avg_pc ~ sex + outofscanner_pre_avg_pc, data = plasticity_data)
+sex_accuracy_change_mod <- apa_print(sex_accuracy_change_mod, digits =3)
+
+age_responsetime_change_mod <- lm(outofscanner_change_avg_rt ~ age + outofscanner_pre_avg_rt, data = plasticity_data)
+age_responsetime_change_mod <- apa_print(age_responsetime_change_mod, digits =3)
+sex_responsetime_change_mod <- lm(outofscanner_change_avg_rt ~ sex + outofscanner_pre_avg_rt, data = plasticity_data)
+sex_responsetime_change_mod <- apa_print(sex_responsetime_change_mod, digits =3)
+
+# Normality of training measure
+training_peak_shapiro_mod <- shapiro.test(plasticity_data$training_highestnback)
+training_peak_shapiro_mod <- apa_print(training_peak_shapiro_mod, digits =3)
+
+
+### Main models: VTA connectivity and accuracy
+VTA_left_LPFC_accuracy_mod <- lm(outofscanner_change_avg_pc ~ L_lPFC_VTA_A_rsFC + age + sex + rest_A_motion + rest_A_vols + outofscanner_pre_avg_pc, data = plasticity_data)
+VTA_left_LPFC_accuracy_mod <- apa_print(VTA_left_LPFC_accuracy_mod, digits =3)
+
+VTA_right_LPFC_accuracy_mod <- lm(outofscanner_change_avg_pc ~ R_lPFC_VTA_A_rsFC + age + sex + rest_A_motion + rest_A_vols + outofscanner_pre_avg_pc, data = plasticity_data)
+VTA_right_LPFC_accuracy_mod <- apa_print(VTA_right_LPFC_accuracy_mod, digits =3)
+
+VTA_MPFC_accuracy_mod <- lm(outofscanner_change_avg_pc ~ mPFC_VTA_A_rsFC + age + sex + rest_A_motion + rest_A_vols + outofscanner_pre_avg_pc, data = plasticity_data)
+VTA_MPFC_accuracy_mod <- apa_print(VTA_MPFC_accuracy_mod, digits =3)
+
+VTA_parietal_accuracy_mod <- lm(outofscanner_change_avg_pc ~ parietal_VTA_A_rsFC + age + sex + rest_A_motion + rest_A_vols + outofscanner_pre_avg_pc, data = plasticity_data)
+VTA_parietal_accuracy_mod <- apa_print(VTA_parietal_accuracy_mod, digits =3)
+
+VTA_striatum_accuracy_mod <- lm(outofscanner_change_avg_pc ~ striatum_VTA_A_rsFC + age + sex + rest_A_motion + rest_A_vols + outofscanner_pre_avg_pc, data = plasticity_data)
+VTA_striatum_accuracy_mod <- apa_print(VTA_striatum_accuracy_mod, digits =3)
+
+
+### Main models: Myelin map values and response time
+myelin_left_LPFC_responsetime_mod <- lm(outofscanner_change_avg_rt ~ L_lPFC_A_myelin + age + sex + outofscanner_pre_avg_rt, data = plasticity_data)
+myelin_left_LPFC_responsetime_mod <- apa_print(myelin_left_LPFC_responsetime_mod, digits =3)
+
+myelin_right_LPFC_responsetime_mod <- lm(outofscanner_change_avg_rt ~ R_lPFC_A_myelin + age + sex + outofscanner_pre_avg_rt, data = plasticity_data)
+myelin_right_LPFC_responsetime_mod <- apa_print(myelin_right_LPFC_responsetime_mod, digits =3)
+
+myelin_MPFC_responsetime_mod <- lm(outofscanner_change_avg_rt ~ mPFC_A_myelin + age + sex + outofscanner_pre_avg_rt, data = plasticity_data)
+myelin_MPFC_responsetime_mod <- apa_print(myelin_MPFC_responsetime_mod, digits =3)
+
+myelin_parietal_responsetime_mod <- lm(outofscanner_change_avg_rt ~ parietal_A_myelin + age + sex + outofscanner_pre_avg_rt, data = plasticity_data)
+myelin_parietal_responsetime_mod <- apa_print(myelin_parietal_responsetime_mod, digits =3)
+
+myelin_striatum_responsetime_mod <- lm(outofscanner_change_avg_rt ~ striatum_A_myelin + age + sex + outofscanner_pre_avg_rt, data = plasticity_data)
+myelin_striatum_responsetime_mod <- apa_print(myelin_striatum_responsetime_mod, digits =3)
+
+
+striatum_baseline_myelin_responsetime_mod <- lm(outofscanner_pre_avg_rt ~ striatum_A_myelin + age + sex, data = plasticity_data)
+striatum_baseline_myelin_responsetime_mod <- apa_print(striatum_baseline_myelin_responsetime_mod, digits =3)
+
+left_LPFC_baseline_myelin_responsetime_mod <- lm(outofscanner_pre_avg_rt ~ L_lPFC_A_myelin + age + sex, data = plasticity_data)
+left_LPFC_baseline_myelin_responsetime_mod <- apa_print(left_LPFC_baseline_myelin_responsetime_mod, digits =3)
+
+right_LPFC_baseline_myelin_responsetime_mod <- lm(outofscanner_pre_avg_rt ~ R_lPFC_A_myelin + age + sex, data = plasticity_data)
+right_LPFC_baseline_myelin_responsetime_mod <- apa_print(right_LPFC_baseline_myelin_responsetime_mod, digits =3)
+
+parietal_baseline_myelin_responsetime_mod <- lm(outofscanner_pre_avg_rt ~ parietal_A_myelin + age + sex, data = plasticity_data)
+parietal_baseline_myelin_responsetime_mod <- apa_print(parietal_baseline_myelin_responsetime_mod, digits =3)
+```
+
+# Results
+Working memory performance improves with training. We considered two behavioral measures of learning: accuracy change and response time (RT) change on the out-of-scanner task. Fifty minutes of training led to small but significant increases in accuracy and decreases in response times (Table 1). However, there was considerable variability in training gains among individuals (Figure 1B-D). Individuals with lower baseline accuracy improved more on accuracy (`r accuracy_mod$full$outofscanner_pre_avg_pc`). Individuals with slower baseline response times improved more on response times (`r responsetime_mod$full$outofscanner_pre_avg_rt`). Gains in accuracy were not associated with improvements in response time (`r learning_gains_mod$full$outofscanner_change_avg_rt`). Improvements in learning were not associated with age (accuracy: `r age_accuracy_change_mod$full$age`; RT: `r age_responsetime_change_mod$full$age`) or sex (accuracy: `r sex_accuracy_change_mod$full$sex`; RT: `r sex_responsetime_change_mod$full$sex`), controlling for baseline performance. The highest n-back level reached during training was not used in brain analyses because the distribution was significantly non-parametric (Shapiro-Wilk:`r training_peak_shapiro_mod$statistic`), due to a few participants reaching high loads (Figure 1B).
+
+Stronger VTA connectivity at baseline predicts greater improvements in accuracy following training. We used functional connectivity between VTA and the task-based FPN regions-of-interest as a proxy measure for dopamine system connectivity. Consistent with the hypothesis that greater strength of dopamine system connectivity is associated with greater learning, stronger resting state functional connectivity between VTA and bilateral LPFC at baseline predicted greater improvements in accuracy (Figure 2B-C: left LPFC: `r VTA_left_LPFC_accuracy_mod$full$L_lPFC_VTA_A_rsFC`, p(FDR) = .23; right LPFC: `r VTA_right_LPFC_accuracy_mod$full$R_lPFC_VTA_A_rsFC`, p(FDR) = .056), controlling for baseline accuracy, age, sex, motion, and total number of volumes. There were no significant associations between accuracy gains and VTA connectivity with mPFC (`r VTA_MPFC_accuracy_mod$full$mPFC_VTA_A_rsFC`), parietal cortex (`r VTA_parietal_accuracy_mod$full$parietal_VTA_A_rsFC`), or striatum (`r VTA_striatum_accuracy_mod$full$striatum_VTA_A_rsFC`). Further, there were no significant associations between VTA-FPN connectivity and changes in response time, and VTA connectivity was not associated with accuracy or response time at baseline.
+
+Lower T1w/T2w ratios at baseline predicts greater improvements in response time following training. We used the ratio of T1w/T2w intensities as a proxy measure for myelination. Individuals with lower baseline T1w/T2w ratios in all five frontoparietal regions-of-interest showed greater improvements in response times (left LPFC: `r myelin_left_LPFC_responsetime_mod$full$L_lPFC_A_myelin`, p(FDR) = .02; right LPFC: `r myelin_right_LPFC_responsetime_mod$full$R_lPFC_A_myelin`, p(FDR) = .02; mPFC: `r myelin_MPFC_responsetime_mod$full$mPFC_A_myelin`, p(FDR) = .078 ; parietal cortex: `r myelin_parietal_responsetime_mod$full$parietal_A_myelin`, p(FDR) = .02; and striatum: `r myelin_striatum_responsetime_mod$full$striatum_A_myelin`, p(FDR) = .02), controlling for baseline response time, age, and sex. T1w/T2w ratios were not associated with accuracy improvement. At baseline, lower T1w/T2w ratios in striatum were related to faster response times at baseline (`r striatum_baseline_myelin_responsetime_mod$full$striatum_A_myelin`), controlling for age and sex. Associations between T1w/T2w ratios and baseline response time in three other regions-of-interest were trendy but not significant (left LPFC: `r left_LPFC_baseline_myelin_responsetime_mod$full$L_lPFC_A_myelin`; right LPFC: `r right_LPFC_baseline_myelin_responsetime_mod$full$R_lPFC_A_myelin`; parietal cortex: `r parietal_baseline_myelin_responsetime_mod$full$parietal_A_myelin`). T1/T2w ratios were not associated with accuracy at baseline.
+
+Brain changes with training were small and not strongly associated with learning. Working memory training was associated with bilateral decreases in FPN activation in the 1- and 2-back contrasts (Figure 4 D-E), but not in the 2-back > 1-back contrast. No regions showed significant increases in activation across timepoints in any contrasts. We did not observe training-related changes in VTA connectivity, or T1w/T2w ratios (Table S1). Brain changes were not associated with learning. Relationships among brain change measures and learning for all regions-of-interest are shown in Supplemental Figure 2.
