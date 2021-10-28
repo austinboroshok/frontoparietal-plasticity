@@ -14,6 +14,8 @@ The top-level directory "Materials for manuscript Individual differences in fron
     'plasticity.Rmd' contains the R code used to run all analyses create Results section of manuscript.
     
     'data_collection_code' contains all MATLAB scripts use to run the n-back tasks (in-scanner, out-of-scanner pre- and post-training assessments, and the 50-minute training period'
+    
+    'analysis_code' contains all scripts used to analyze behavioral and neural data (see below for detailed descriptions)
 
 
 Imagine Processing Pipeline ('analysis code' subdirectory:
