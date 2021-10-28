@@ -12,6 +12,8 @@ The top-level directory "Materials for manuscript Individual differences in fron
     'data_dictionary.xslx' provides a desription of each variable within the master dataset ('plasticity_mri_sample.csv').
 
     'plasticity.Rmd' contains the R code used to run all analyses create Results section of manuscript.
+    
+    'data_collection_code' contains all MATLAB scripts use to run the n-back tasks (in-scanner, out-of-scanner pre- and post-training assessments, and the 50-minute training period'
 
 
 Imagine Processing Pipeline ('analysis code' subdirectory:
