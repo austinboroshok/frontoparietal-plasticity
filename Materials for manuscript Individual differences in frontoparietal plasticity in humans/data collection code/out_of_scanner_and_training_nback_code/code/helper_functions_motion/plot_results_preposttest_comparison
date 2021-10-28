@@ -1,0 +1,103 @@
+function plot_results_preposttest_comparison(dat)
+%
+%FOR N-BACK 
+
+% manually select files pretest files, can combine multiple
+[files,path] = uigetfile('../data/*.mat','Select PRETEST file(s)','multiselect','on');
+
+pre = load_and_combine_files(files,path,'pretest');
+
+% manually select files posttest files, can combine multiple
+[files,path] = uigetfile('../data/*.mat','Select POSTTEST files(s)','multiselect','on');
+
+post = load_and_combine_files(files,path,'posttest');
+
+%get calculation of missed trials
+missed_trials = ((100*sum(pre.trials.resp == -1)/sum(~isnan((pre.trials.resp)))) + ((100*sum(post.trials.resp == -1)/sum(~isnan((post.trials.resp))))/2));
+
+figure; hold on;
+suptitle([ ' (perc missed = ' num2str(missed_trials,2) ')']);
+
+set(gcf,'color',[1 1 1]);
+set(gcf,'Units','pixels','Position',[0 0 1000 600]);
+
+for b = 1:length(pre.nbacks)
+    
+    nback(b) = pre.nbacks(b);
+    
+    % trials with this nback
+    pre_trial_inds = pre.trials.nback == nback(b) & ~isnan(pre.trials.resp);
+    post_trial_inds = post.trials.nback == nback(b) & ~isnan(post.trials.resp);
+
+    % performance
+    pre_percent_correct(b)    = 100*sum(pre.trials.isCorrect(pre_trial_inds) == 1)/sum(pre_trial_inds);
+    post_percent_correct(b)   = 100*sum(post.trials.isCorrect(post_trial_inds) == 1)/sum(post_trial_inds);
+
+    pre_hits(b)               = sum(pre.trials.resp(pre_trial_inds) == 1 & pre.trials.nBackTrue(pre_trial_inds) == 1)/sum(pre_trial_inds);
+    post_hits(b)			  = sum(post.trials.resp(post_trial_inds) == 1 & post.trials.nBackTrue(post_trial_inds) == 1)/sum(post_trial_inds);
+    post_hits(b)
+
+    pre_false_alarms(b)       = sum(pre.trials.resp(pre_trial_inds) == 1 & pre.trials.nBackTrue(pre_trial_inds) == 0)/sum(pre_trial_inds);
+    post_false_alarms(b)      = sum(post.trials.resp(post_trial_inds) == 1 & post.trials.nBackTrue(post_trial_inds) == 0)/sum(post_trial_inds);
+
+    pre_median_rt(b)          = median(pre.trials.respTime(pre_trial_inds));          
+    post_median_rt(b)		  = median(post.trials.respTime(post_trial_inds));
+    % d prime - calculated on each motion direction
+    if numel(pre_trial_inds) > 1
+        [pre_dp(b)] = dprime(pre_percent_correct(b)/100,pre_false_alarms(b)/100,sum(pre_trial_inds));
+
+        [post_dp(b)] = dprime(post_percent_correct(b)/100,post_false_alarms(b)/100,sum(post_trial_inds));
+    else
+        pre_dp(b) = NaN;
+        post_dp(b)= NaN;
+
+    end
+    
+end
+%subplot(2,2,1); hold on;
+%h(b) = plot(nback, pre_percent_correct,'o-','color',ColorIt(2),'markerfacecolor',ColorIt(2));
+%subplot(2,2,2); hold on;
+%plot(nback, pre_dp,'o-','color',ColorIt(2),'markerfacecolor',ColorIt(2));
+%subplot(2,2,3); hold on;
+%plot(nback,pre_median_rt,'o-','color',ColorIt(2),'markerfacecolor',ColorIt(2));
+
+
+    subplot(2,2,1); hold on;
+    plot(nback, pre_percent_correct(b),'o-','color',ColorIt(2),'markerfacecolor',ColorIt(2));
+    %h(b) = plot(nback(b),post_percent_correct(b),'o-','color',ColorIt(2),'markerfacecolor',ColorIt(2));
+
+     subplot(2,2,2); hold on;
+     plot(nback, pre_dp(b),'o-','color',ColorIt(2),'markerfacecolor',ColorIt(2));
+     h(b) = plot(nback(b),post_dp(b),'o-','color',ColorIt(2),'markerfacecolor',ColorIt(2));
+  	
+  	subplot(2,2,3); hold on;
+  	plot(nback, pre_median_rt(b)), 'o-';'color';ColorIt(2),'markerfacecolor';ColorIt(2);
+ 	h(b) = plot(nback(b), post_median_rt(b), 'o-','color',ColorIt(2),'markerfacecolor',ColorIt(2));
+
+subplot(2,2,1); hold on;
+% lh = legend(h,cellstr(num2str(coherence(:,1), '%-d')),'location','southeast');
+% hlt = text(...
+%     'Parent', lh.DecorationContainer, ...
+%     'String', 'coherence', ...
+%     'HorizontalAlignment', 'center', ...
+%     'VerticalAlignment', 'bottom', ...
+%     'Position', [0.5, 1.05, 0], ...
+%     'Units', 'normalized');
+ylabel('percent correct');
+xlabel('nback');
+ylim([0 100]);
+xlim([2 4]);
+box on;
+
+subplot(2,2,2); hold on;
+ylabel('sensitivity');
+xlabel('nback');
+%ylim([0 5]);
+xlim([2 4]);
+box on;
+
+subplot(2,2,3); hold on;
+ylabel('median RT seconds');
+xlabel('nback')
+xlim([2 4]);
+box on;
