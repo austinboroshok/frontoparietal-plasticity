@@ -13,7 +13,7 @@ The top-level directory "Materials for manuscript Individual differences in fron
 
     'plasticity.Rmd' contains the R code used to run all analyses create Results section of manuscript.
     
-    'data_collection_code' contains all MATLAB scripts use to run the n-back tasks (in-scanner, out-of-scanner pre- and post-training assessments, and the 50-minute training period'
+    'data_collection_code' contains all MATLAB scripts use to run the n-back tasks (in-scanner, out-of-scanner pre- and post-training assessments, and the 50-minute training period.' Here, you can also find a sample sub_ses-01_task-nback_run-01_events.tsv file describing the onset and duration of blocks during the fMRI nback task.
     
     'analysis_code' contains all scripts used to analyze behavioral and neural data (see below for detailed descriptions)
 
